@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #060708;
+    color: #e7e5e4;
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+}
+
+.vignette-overlay {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(6, 7, 8, 0) 38%,
+    rgba(6, 7, 8, 0.55) 78%,
+    rgba(3, 4, 5, 0.92) 100%
+  );
+}
+
+.dread-vignette {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(127, 29, 29, 0) 35%,
+    rgba(127, 29, 29, 0.35) 75%,
+    rgba(69, 10, 10, 0.85) 100%
+  );
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, -1%); }
+}
+
+.film-grain {
+  background-image: repeating-radial-gradient(
+    circle at 0 0,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(0, 0, 0, 0.04) 2px
+  );
+  animation: grainShift 0.35s steps(4) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain {
+    animation: none;
+  }
+}
